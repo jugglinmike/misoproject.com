@@ -1,0 +1,6 @@
+{
+	"plugins": [
+		"plugins/markdown",
+		"../jsdoc-external-example/src/external-example"
+	]
+}
