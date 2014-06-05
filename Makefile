@@ -22,3 +22,11 @@ site/%/api : projects/%
 .PHONY: clean
 clean:
 	rm -rf site
+
+.PHONY: deploy
+deploy: clean default
+	git checkout -B gh-pages
+	git rm -rf .
+	mv site/* .
+	git add .
+	git commit -m "Deploy site"
