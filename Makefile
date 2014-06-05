@@ -1,12 +1,12 @@
-site: ssite site/d3-chart/api site/dataset/api
+default: site site/d3-chart/api site/dataset/api
 
-.PHONY: ssite
-ssite:
+site:
 	bundle exec staticmatic build .
+	cp -R src/* site
 
 site/%/api : projects/%
-	name=$(notdir $<)
-	@echo $@ --- $< --- $(name)
+	#name = $(notdir $<)
+	#@echo $@ --- $< --- $(name)
 	mkdir -p $@
 	./node_modules/.bin/jsdoc $</src \
 		--destination $@ \
