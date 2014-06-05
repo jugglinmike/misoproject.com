@@ -5,8 +5,9 @@ site:
 	cp -R src/* site
 
 site/%/api : projects/%
+	$(eval commit=$(word 1, $(shell git submodule status $<)))
 	$(eval name=$(subst -,.,$(notdir $<)))
-	$(eval srcUrl=https://github.com/misoproject/$(name)/blob/master/src/)
+	$(eval srcUrl=https://github.com/misoproject/$(name)/blob/$(commit)/src/)
 	$(eval srcFileUrl=$(srcUrl){{ fileName }})
 	$(eval srcLineUrl=$(srcFileUrl)\#L{{ lineNumber }})
 	$(eval exDir=$</examples/api)
