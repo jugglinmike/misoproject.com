@@ -2,9 +2,5 @@
 	"plugins": [
 		"plugins/markdown",
 		"../jsdoc-external-example/src/external-example"
-	],
-	"templates": {
-		"sourceFileUrl": "https://github.com/misoproject/d3.chart/blob/master/src/{{ fileName }}",
-		"sourceLineUrl": "https://github.com/misoproject/d3.chart/blob/master/src/{{ fileName }}#L{{ lineNumber }}"
-	}
+	]
 }
