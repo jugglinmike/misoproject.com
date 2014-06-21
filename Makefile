@@ -15,8 +15,8 @@ node_modules: package.json
 site/%/api : projects/% node_modules
 	$(eval commit=$(word 1, $(shell git submodule status $<)))
 	$(eval name=$(subst -,.,$(notdir $<)))
-	$(eval srcUrl=https://github.com/misoproject/$(name)/blob/$(commit)/src/)
-	$(eval srcFileUrl=$(srcUrl){{ fileName }})
+	$(eval srcUrl=https://github.com/misoproject/$(name))
+	$(eval srcFileUrl=$(srcUrl)/blob/$(commit)/src/{{ fileName }})
 	$(eval srcLineUrl=$(srcFileUrl)\#L{{ lineNumber }})
 	$(eval exDir=$</examples/api)
 	mkdir -p $@
@@ -24,7 +24,7 @@ site/%/api : projects/% node_modules
 		--destination $@ \
 		--template ../jsdoc-template-miso/src \
 		--configure ./jsdoc-config.json \
-		--query "layout=$@.html&externalExBase=$(exDir)&sourceFileUrl=$(srcFileUrl)&sourceLineUrl=$(srcLineUrl)"
+		--query "layout=$@.html&externalExBase=$(exDir)&sourceUrl=$(srcUrl)&sourceFileUrl=$(srcFileUrl)&sourceLineUrl=$(srcLineUrl)" \
 
 .PHONY: clean
 clean:
