@@ -70,16 +70,19 @@
             %a{ :href => 'http://www.gatesfoundation.org/' }
               =img('/images/gates.png')
 
-    %script{ :src => "/js/jquery.min.js" }
-    %script{ :src => '/js/nav.js' }
-    %script{ :src => '/js/lodash.js' }
-    %script{ :src => '/js/underscore.deferred.js' }
-    %script{ :src => "/js/d3/d3.v3.min.js", :charset => "utf-8" }
-    %script{ :src => "/js/d3.chart.js" }
-    %script{ :src => "/js/bootstrap/transition.js" }
-    %script{ :src => "/js/bootstrap/collapse.js" }
-    %script{ :src => "/js/ace-min/ace.js", :type => "text/javascript", :charset => "utf-8"}
-    %script{ :src => "/js/acify.js"}
+    %script{ :src => "/js/lib/require.js" }
+    :plain
+      <script>
+        require(['/js/amd-config.js'], function() {
+          require([
+            'lodash', 'nav', 'bootstrap/transition',
+            'bootstrap/collapse', 'd3.chart-repo/get-charts',
+            'd3', 'd3.chart'
+          ], function() {
+            require(['acify']);
+          });
+        });
+      </script>
 
     = @extra_scripts
 

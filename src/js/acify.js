@@ -1,5 +1,6 @@
-window.log;
-(function() {
+define(function(require) {
+  var ace = require('ace/ace');
+  require('underscore.deferred');
 
   var config = {
 
@@ -427,4 +428,4 @@ window.log;
 
   window.__def = _.Deferred();
   acify(".codeblock");
-}());
+});

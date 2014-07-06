@@ -64,13 +64,19 @@
             %a{ :href => 'http://www.gatesfoundation.org/' }
               =img('/images/gates.png')
 
-    %script{ :src => "/js/jquery.min.js" }
-    %script{ :src => '/js/nav.js' }
-    %script{ :src => "/js/miso.storyboard.deps.js" }
-    %script{ :src => "/js/bootstrap/transition.js" }
-    %script{ :src => "/js/bootstrap/collapse.js" }
-    %script{ :src => "/js/ace-min/ace.js", :type => "text/javascript", :charset => "utf-8"}
-    %script{ :src => "/js/acify.js"}
+    %script{ :src => "/js/lib/require.js" }
+    :plain
+      <script>
+        require(['/js/amd-config.js'], function() {
+          require([
+            'lodash', 'nav', 'bootstrap/transition',
+            'bootstrap/collapse', 'miso.storyboard.deps'
+          ], function() {
+            require(['acify']);
+          });
+        });
+      </script>
+
 
     = @extra_scripts
 
